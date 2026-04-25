@@ -37,7 +37,32 @@
         tap-ms = <100>;
     };
 
+    vertical_scroll: vertical_scroll {
+        compatible = "zmk,behavior-sensor-rotate";
+        label = "VERTICAL_SCROLL";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+
+        tap-ms = <5>;
+    };
+
+    horizontal_scroll: horizontal_scroll {
+        compatible = "zmk,behavior-sensor-rotate";
+        label = "HORIZONTAL_SCROLL";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_RIGHT>, <&msc SCRL_LEFT>;
+    };
+
     behaviors {
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        toggle-3 {
+            bindings = <&tog 3>;
+            key-positions = <57 59>;
+        };
     };
 
     keymap {
@@ -80,6 +105,32 @@
 
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
             label = "LAYER 2";
+        };
+
+        layer_3 {
+            bindings = <
+&none      &none  &none  &none  &none  &none    &mmv MOVE_UP     &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_DOWN   &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_LEFT   &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_RIGHT  &none   &none  &none  &none  &none  &none
+&mkp LCLK  &none  &none  &none  &none  &none    &mkp RCLK        &tog 4  &none  &none  &none  &none
+            >;
+
+            sensor-bindings = <&vertical_scroll>;
+            label = "LAYER 3";
+        };
+
+        layer_4 {
+            bindings = <
+&none      &none  &none  &none  &none  &none    &mmv MOVE_UP     &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_DOWN   &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_LEFT   &none   &none  &none  &none  &none  &none
+&none      &none  &none  &none  &none  &none    &mmv MOVE_RIGHT  &none   &none  &none  &none  &none  &none
+&mkp LCLK  &none  &none  &none  &none  &none    &mkp RCLK        &tog 3  &none  &none  &none  &none
+            >;
+
+            sensor-bindings = <&horizontal_scroll>;
+            label = "LAYER 4";
         };
     };
 };
