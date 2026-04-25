@@ -5,10 +5,23 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     # Additional modules containing boards/shields/custom code can be listed here as well
-    # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
+      # See:
+      # - https://zmk.dev/docs/features/modules
+      # - https://docs.zephyrproject.org/3.5.0/develop/west/manifest.html#projects
+
+  # Animation module, need to check it
+  #  - name: gpeye
+  #    url-base: https://github.com/GPeye
+
   projects:
+   # - name: mario-peripheral-animation
+   #   remote: gpeye
+   #    revision: main 
+    - name: sofle_mtz
+      url: https://github.com/Matheusleal/zmk-config-sofle-mtz
+      revision: main
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
   self:
-    path: config
+    path: boards
